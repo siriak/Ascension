@@ -4,6 +4,6 @@ namespace Ascension.Domain.Concepts
 {
     public abstract class Army
     {
-        public readonly ICollection<(Unit, int count)> Units;
+        public ICollection<(Unit, int count)> Units { get; }
     }
 }

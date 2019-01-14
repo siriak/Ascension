@@ -4,7 +4,13 @@ namespace Ascension.Domain.Concepts
 {
     public struct Resources
     {
-        public uint Food, Production, Science, Commerce, Culture, Soldiers, Ammunition;
+        public uint Food;
+        public uint Production;
+        public uint Science;
+        public uint Commerce;
+        public uint Culture;
+        public uint Soldiers;
+        public uint Ammunition;
 
         public static Resources operator +(Resources r1, Resources r2)
         {
@@ -16,7 +22,7 @@ namespace Ascension.Domain.Concepts
                 Commerce = r1.Commerce + r2.Commerce,
                 Culture = r1.Culture + r2.Culture,
                 Soldiers = r1.Soldiers + r2.Soldiers,
-                Ammunition = r1.Ammunition + r2.Ammunition
+                Ammunition = r1.Ammunition + r2.Ammunition,
             };
         }
 
@@ -35,7 +41,7 @@ namespace Ascension.Domain.Concepts
                 Commerce = r1.Commerce - r2.Commerce,
                 Culture = r1.Culture - r2.Culture,
                 Soldiers = r1.Soldiers - r2.Soldiers,
-                Ammunition = r1.Ammunition - r2.Ammunition
+                Ammunition = r1.Ammunition - r2.Ammunition,
             };
         }
 
