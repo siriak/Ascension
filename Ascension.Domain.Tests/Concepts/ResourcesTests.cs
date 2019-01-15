@@ -1,14 +1,16 @@
-﻿using NUnit.Framework;
+﻿using System;
+
 using Ascension.Domain.Concepts;
 using Ascension.Domain.Exceptions;
-using System;
+using NUnit.Framework;
 
 namespace Ascension.Domain.Tests.Concepts
 {
     [TestFixture]
-    class ResourcesTests
+    internal class ResourcesTests
     {
-        [Test, Parallelizable]
+        [Test]
+        [Parallelizable]
         public void Substract_NotSufficientResources_ExceptionThrown([Random(1)]uint count1, [Random(1)]uint count2)
         {
             var (smaller, bigger) = GetResources(count1, count2);
@@ -16,7 +18,8 @@ namespace Ascension.Domain.Tests.Concepts
             Assert.Throws<NotSufficientResourcesException>(() => { var result = count1 != count2 ? smaller - bigger : throw new NotSufficientResourcesException(); });
         }
 
-        [Test, Parallelizable]
+        [Test]
+        [Parallelizable]
         public void Substract_EnoughResources_Substracted([Random(1)]uint count1, [Random(1)]uint count2)
         {
             var (smaller, bigger) = GetResources(count1, count2);
@@ -32,7 +35,8 @@ namespace Ascension.Domain.Tests.Concepts
             Assert.AreEqual(result.Soldiers, bigger.Soldiers - smaller.Soldiers);
         }
 
-        [Test, Parallelizable]
+        [Test]
+        [Parallelizable]
         public void Add_EnoughResources_Added([Random(1)]uint resourcesCount)
         {
             var r1 = GetResources(resourcesCount);
@@ -66,7 +70,7 @@ namespace Ascension.Domain.Tests.Concepts
                 Culture = count,
                 Production = count,
                 Science = count,
-                Soldiers = count
+                Soldiers = count,
             };
     }
 }
