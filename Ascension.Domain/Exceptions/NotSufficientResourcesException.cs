@@ -1,6 +1,6 @@
 ﻿namespace Ascension.Domain.Exceptions
 {
-    public class NotSufficientResourcesException : AscensionException
+    public class NotSufficientResourcesException : BusinessException
     {
     }
 }
