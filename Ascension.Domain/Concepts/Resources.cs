@@ -1,8 +1,10 @@
-﻿using Ascension.Domain.Exceptions;
+﻿using System;
+
+using Ascension.Domain.Exceptions;
 
 namespace Ascension.Domain.Concepts
 {
-    public struct Resources
+    public struct Resources : IComparable<Resources>, IComparable
     {
         public uint Food;
         public uint Production;
@@ -77,6 +79,20 @@ namespace Ascension.Domain.Concepts
 
         public static bool operator !=(Resources r1, Resources r2) => !(r1 == r2);
 
+        public Resources TrimWith(Resources r)
+        {
+            return new Resources()
+            {
+                Food = Food > r.Food ? r.Food : Food,
+                Production = Production > r.Production ? r.Production : Production,
+                Science = Science > r.Science ? r.Science : Science,
+                Commerce = Commerce > r.Commerce ? r.Commerce : Commerce,
+                Culture = Culture > r.Culture ? r.Culture : Culture,
+                Soldiers = Soldiers > r.Soldiers ? r.Soldiers : Soldiers,
+                Ammunition = Ammunition > r.Ammunition ? r.Ammunition : Ammunition,
+            };
+        }
+
         public override bool Equals(object obj)
         {
             return obj is Resources r
@@ -106,6 +122,41 @@ namespace Ascension.Domain.Concepts
             hashCode = hashCode * -1521134295 + Soldiers.GetHashCode();
             hashCode = hashCode * -1521134295 + Ammunition.GetHashCode();
             return hashCode;
+        }
+
+        public int CompareTo(Resources other)
+        {
+            if (this > other)
+            {
+                return 1;
+            }
+
+            if (this == other)
+            {
+                return 0;
+            }
+
+            if (this < other)
+            {
+                return -1;
+            }
+
+            throw new ResourcesNotComparableException();
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is null)
+            {
+                throw new ArgumentNullException(nameof(obj));
+            }
+
+            if (!(obj is Resources r))
+            {
+                throw new ArgumentException();
+            }
+
+            return CompareTo(r);
         }
     }
 }
