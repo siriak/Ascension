@@ -8,11 +8,11 @@ namespace Ascension.Domain.Units
 
         public override uint Damage { get; } = 10;
 
-        public override UnitType AttackType { get; } = UnitType.Light;
+        public override TargetUnitClass TargetUnitClass { get; } = TargetUnitClass.Light;
 
         public override uint Health { get; } = 10;
 
-        public override UnitType DefenseType { get; } = UnitType.Medium;
+        public override UnitClass UnitClass { get; } = UnitClass.Medium;
 
         public override Resources HireCost { get; } = new Resources
         {

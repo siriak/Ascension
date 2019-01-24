@@ -1,9 +1,10 @@
 ﻿namespace Ascension.Domain.Concepts
 {
-    public enum UnitType
+    public enum UnitClass
     {
         Light,
         Medium,
         Heavy,
+        Artillery,
     }
 }

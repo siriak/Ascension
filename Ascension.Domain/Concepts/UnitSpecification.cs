@@ -6,11 +6,11 @@
 
         public abstract uint Damage { get; }
 
-        public abstract UnitType AttackType { get; }
+        public abstract TargetUnitClass TargetUnitClass { get; }
 
         public abstract uint Health { get; }
 
-        public abstract UnitType DefenseType { get; }
+        public abstract UnitClass UnitClass { get; }
 
         public abstract Resources HireCost { get; }
 
