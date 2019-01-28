@@ -14,6 +14,8 @@
 
         public uint UnitCount { get; private set; }
 
+        public uint TotalDamage => UnitSpecification.Damage * UnitCount;
+
         public void ReceiveDamage(uint damage)
         {
             var lostCount = damage / UnitSpecification.Health;
