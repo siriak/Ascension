@@ -1,4 +1,6 @@
-﻿namespace Ascension.Domain.Concepts
+﻿using Ascension.Domain.Concepts;
+
+namespace Ascension.Domain.Specifications
 {
     public abstract class UnitSpecification
     {

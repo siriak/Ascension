@@ -1,4 +1,5 @@
 ﻿using Ascension.Domain.Concepts;
+using Ascension.Domain.Specifications;
 using Ascension.Domain.Units;
 using NUnit.Framework;
 
@@ -71,10 +72,11 @@ namespace Ascension.Domain.Tests.Concepts
 
         private (UnitSpecification specification, UnitStack stack) SetUp(uint count)
         {
-            var specification = new SlaveSpecification();
-            var stack = new UnitStack(specification, count);
+            var unitSpecification = new SlaveSpecification();
+            var stackSpecification = new UnitStackSpecification(unitSpecification, count);
+            var stack = new UnitStack(stackSpecification);
 
-            return (specification, stack);
+            return (unitSpecification, stack);
         }
     }
 }

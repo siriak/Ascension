@@ -1,25 +1,33 @@
-﻿namespace Ascension.Domain.Concepts
+﻿using System;
+
+using Ascension.Domain.Specifications;
+
+namespace Ascension.Domain.Concepts
 {
     public class UnitStack
     {
-        public UnitStack(UnitSpecification unitSpecification, uint unitCount = 0)
-        {
-            UnitSpecification = unitSpecification;
-            UnitCount = unitCount;
-        }
+        public UnitStack(UnitStackSpecification specification) => Specification = specification ?? throw new ArgumentNullException(nameof(specification));
 
-        public UnitSpecification UnitSpecification { get; }
+        public UnitStackSpecification Specification { get; }
 
         public bool IsEmpty => UnitCount == 0;
 
         public uint UnitCount { get; private set; }
 
-        public uint TotalDamage => UnitSpecification.Damage * UnitCount;
+        public uint TotalDamage => Specification.UnitDamage * UnitCount;
 
         public void ReceiveDamage(uint damage)
         {
-            var lostCount = damage / UnitSpecification.Health;
+            var lostCount = damage / Specification.UnitHealth;
             UnitCount = lostCount > UnitCount ? 0 : UnitCount - lostCount;
         }
+
+        #region Shortcuts
+
+        public TargetUnitClass TargetUnitClass => Specification.UnitSpecification.TargetUnitClass;
+
+        public UnitClass UnitClass => Specification.UnitSpecification.UnitClass;
+
+        #endregion Shortcuts
     }
 }
