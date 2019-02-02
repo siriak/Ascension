@@ -18,6 +18,6 @@
 
         public uint UnitHealth => UnitSpecification.Health;
 
-        #endregion Shortcuts
+        #endregion
     }
 }

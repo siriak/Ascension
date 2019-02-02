@@ -28,6 +28,6 @@ namespace Ascension.Domain.Concepts
 
         public UnitClass UnitClass => Specification.UnitSpecification.UnitClass;
 
-        #endregion Shortcuts
+        #endregion
     }
 }
