@@ -1,10 +1,11 @@
 ﻿using System;
 
+using Ascension.Domain.Interfaces;
 using Ascension.Domain.Specifications;
 
 namespace Ascension.Domain.Concepts
 {
-    public class UnitStack
+    public class UnitStack : IResourceConsumer
     {
         public UnitStack(UnitStackSpecification specification) => Specification = specification ?? throw new ArgumentNullException(nameof(specification));
 
@@ -20,6 +21,26 @@ namespace Ascension.Domain.Concepts
         {
             var lostCount = damage / Specification.UnitHealth;
             UnitCount = lostCount > UnitCount ? 0 : UnitCount - lostCount;
+        }
+
+        public Resources Consume(Resources allocated)
+        {
+            var canHireCount = allocated / Specification.UnitHireCost;
+
+            if (canHireCount == 0)
+            {
+                return allocated;
+            }
+
+            var unitsNeed = Specification.UnitCount - UnitCount;
+            if (canHireCount > unitsNeed)
+            {
+                canHireCount = unitsNeed;
+            }
+
+            UnitCount += canHireCount;
+
+            return allocated - UnitCount * Specification.UnitHireCost;
         }
 
         #region Shortcuts

@@ -1,4 +1,6 @@
-﻿namespace Ascension.Domain.Specifications
+﻿using Ascension.Domain.Concepts;
+
+namespace Ascension.Domain.Specifications
 {
     public sealed class UnitStackSpecification
     {
@@ -17,6 +19,10 @@
         public uint UnitDamage => UnitSpecification.Damage;
 
         public uint UnitHealth => UnitSpecification.Health;
+
+        public Resources UnitHireCost => UnitSpecification.HireCost;
+
+        public Resources UnitMaintenanceCost => UnitSpecification.MaintenanceCost;
 
         #endregion
     }

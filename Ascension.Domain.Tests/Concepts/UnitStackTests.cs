@@ -10,7 +10,7 @@ namespace Ascension.Domain.Tests.Concepts
     {
         [Test]
         [Parallelizable]
-        public void ReceiveDamage_StackDestroyedRightDamage_UnitCountIsZero([Random(1)]uint count)
+        public void ReceiveDamage_StackDestroyedRightDamage_UnitCountIsZero([Random(1u, 1000, 1)]uint count)
         {
             var (specification, stack) = SetUp(count);
 
@@ -21,7 +21,7 @@ namespace Ascension.Domain.Tests.Concepts
 
         [Test]
         [Parallelizable]
-        public void ReceiveDamage_StackDestroyedMoreDamage_UnitCountIsZero([Random(1)]uint count)
+        public void ReceiveDamage_StackDestroyedMoreDamage_UnitCountIsZero([Random(1u, 1000, 1)]uint count)
         {
             var (specification, stack) = SetUp(count);
 
@@ -32,7 +32,7 @@ namespace Ascension.Domain.Tests.Concepts
 
         [Test]
         [Parallelizable]
-        public void ReceiveDamage_StackNotDestroyed1HPLeft_UnitCountNotZero([Random(1, uint.MaxValue, 1)]uint count)
+        public void ReceiveDamage_StackNotDestroyed1HPLeft_UnitCountNotZero([Random(1u, 1000, 1)]uint count)
         {
             var (specification, stack) = SetUp(count);
 
@@ -43,7 +43,7 @@ namespace Ascension.Domain.Tests.Concepts
 
         [Test]
         [Parallelizable]
-        public void ReceiveDamage_StackNotDestroyed1UnitLeft_UnitCountNotZero([Random(1, uint.MaxValue, 1)]uint count)
+        public void ReceiveDamage_StackNotDestroyed1UnitLeft_UnitCountNotZero([Random(1u, 1000, 1)]uint count)
         {
             var (specification, stack) = SetUp(count);
 
@@ -63,7 +63,7 @@ namespace Ascension.Domain.Tests.Concepts
 
         [Test]
         [Parallelizable]
-        public void IsEmpty_UnitCountNotZero_StackNotEmpty([Random(1, uint.MaxValue, 1)]uint count)
+        public void IsEmpty_UnitCountNotZero_StackNotEmpty([Random(1u, 1000, 1)]uint count)
         {
             var (_, stack) = SetUp(count);
 
@@ -75,6 +75,8 @@ namespace Ascension.Domain.Tests.Concepts
             var unitSpecification = new SlaveSpecification();
             var stackSpecification = new UnitStackSpecification(unitSpecification, count);
             var stack = new UnitStack(stackSpecification);
+            var resources = count * unitSpecification.HireCost;
+            stack.Consume(resources);
 
             return (unitSpecification, stack);
         }

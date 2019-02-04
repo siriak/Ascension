@@ -37,7 +37,7 @@ namespace Ascension.Domain.Tests.Concepts
 
         [Test]
         [Parallelizable]
-        public void Add_EnoughResources_Added([Random(1)]uint resourcesCount)
+        public void Add_EnoughResources_Added([Random(0u, 1000, 1)]uint resourcesCount)
         {
             var r1 = GetResources(resourcesCount);
             var r2 = GetResources(resourcesCount);
