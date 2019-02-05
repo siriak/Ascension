@@ -3,12 +3,16 @@ using System.Linq;
 
 namespace Ascension.Domain.Concepts
 {
-    public abstract class Army
+    public class Army
     {
-        public ISet<UnitStack> Units { get; }
+        public IList<UnitStack> Units { get; } = new List<UnitStack>();
 
-        public IEnumerable<UnitStack> GetUnitStacksOfAttackType(TargetUnitClass targetUnitClass) => Units.Where(s => s.UnitSpecification.TargetUnitClass == targetUnitClass);
+        public IEnumerable<UnitStack> GetUnitStacksOfAttackType(TargetUnitClass targetUnitClass) => Units.Where(us => us.TargetUnitClass == targetUnitClass);
 
-        public IEnumerable<UnitStack> GetUnitStacksOfDefenseType(UnitClass unitClass) => Units.Where(s => s.UnitSpecification.UnitClass == unitClass);
+        public IEnumerable<UnitStack> GetUnitStacksOfDefenseType(UnitClass unitClass) => Units.Where(us => us.UnitClass == unitClass);
+
+        ////public void Attack(Army enemy)
+        ////{
+        ////}
     }
 }

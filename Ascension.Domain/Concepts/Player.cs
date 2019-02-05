@@ -1,6 +1,6 @@
 ﻿namespace Ascension.Domain.Concepts
 {
-    public class Player
+    public abstract class Player
     {
     }
 }
