@@ -10,9 +10,13 @@ namespace Ascension.Domain.Specifications
 
         public abstract TargetUnitClass TargetUnitClass { get; }
 
+        public abstract TargetUnitLayers TargetUnitLayers { get; }
+
         public abstract uint Health { get; }
 
         public abstract UnitClass UnitClass { get; }
+
+        public abstract UnitLayer UnitLayer { get; }
 
         public abstract Resources HireCost { get; }
 

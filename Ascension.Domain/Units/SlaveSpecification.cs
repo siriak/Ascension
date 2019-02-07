@@ -11,9 +11,13 @@ namespace Ascension.Domain.Units
 
         public override TargetUnitClass TargetUnitClass { get; } = TargetUnitClass.Light;
 
+        public override TargetUnitLayers TargetUnitLayers { get; } = TargetUnitLayers.Land;
+
         public override uint Health { get; } = 1;
 
         public override UnitClass UnitClass { get; } = UnitClass.Light;
+
+        public override UnitLayer UnitLayer { get; } = UnitLayer.Land;
 
         public override Resources HireCost { get; } = new Resources
         {
