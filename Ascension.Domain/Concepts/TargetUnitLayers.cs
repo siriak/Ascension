@@ -9,5 +9,6 @@ namespace Ascension.Domain.Concepts
         Land = UnitLayer.Land,
         Water = UnitLayer.Water,
         Underwater = UnitLayer.Underwater,
+        None = UnitLayer.None,
     }
 }
