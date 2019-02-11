@@ -1,4 +1,4 @@
-﻿namespace Ascension.Domain.Concepts
+﻿namespace Ascension.Domain.Enums
 {
     public enum TargetUnitClass
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 
+using Ascension.Domain.Enums;
 using Ascension.Domain.Interfaces;
 using Ascension.Domain.Specifications;
 

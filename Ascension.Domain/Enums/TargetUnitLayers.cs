@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ascension.Domain.Concepts
+namespace Ascension.Domain.Enums
 {
     [Flags]
     public enum TargetUnitLayers

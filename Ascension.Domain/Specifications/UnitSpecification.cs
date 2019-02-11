@@ -1,4 +1,5 @@
 ﻿using Ascension.Domain.Concepts;
+using Ascension.Domain.Enums;
 
 namespace Ascension.Domain.Specifications
 {
