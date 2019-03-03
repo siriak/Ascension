@@ -2,7 +2,7 @@
 
 namespace Ascension.Domain.Internal
 {
-    internal class PutOnlyResourceStorage
+    public class PutOnlyResourceStorage
     {
         private readonly ResourceStorage storage;
 

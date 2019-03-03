@@ -2,7 +2,7 @@
 
 namespace Ascension.Domain.Internal
 {
-    internal static class ResourcesHelpers
+    public static class ResourcesHelpers
     {
         public static Resources TrimWith(this Resources resource, Resources trimmer)
         {

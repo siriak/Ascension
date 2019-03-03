@@ -2,7 +2,7 @@
 
 namespace Ascension.Domain.Internal
 {
-    internal class ResourceStorage
+    public class ResourceStorage
     {
         private Resources capacity;
         private Resources available;
