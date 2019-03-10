@@ -15,6 +15,8 @@ namespace Ascension.Domain.Concepts
 
         public bool IsFinished { get; private set; }
 
+        public int Priority { get; private set; }
+
         public Resources Consume(Resources allocated)
         {
             if (IsFinished)

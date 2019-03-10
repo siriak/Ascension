@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Ascension.Domain.Concepts
+namespace Ascension.Domain.Interfaces
 {
-    internal interface ICountriesGenerator
+    public interface ICountriesGenerator
     {
         ICollection<Country> GenerateCountries();
     }
