@@ -7,10 +7,7 @@ namespace Ascension.Domain.Concepts
 {
     public class Map : ITurnProcessor<MapProcessTurnArgs, MapProcessTurnResult>
     {
-        public Map(int size)
-        {
-            Size = size;
-        }
+        public Map(int size) => Size = size;
 
         private readonly Territory[,] map;
 
