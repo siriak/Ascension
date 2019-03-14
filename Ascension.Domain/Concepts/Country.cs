@@ -2,6 +2,7 @@
 using System.Linq;
 
 using Ascension.Domain.Internal;
+using Ascension.Domain.Projects;
 
 namespace Ascension.Domain.Concepts
 {
@@ -13,13 +14,15 @@ namespace Ascension.Domain.Concepts
 
         public ICollection<Army> Armies { get; } = new List<Army>();
 
+        public ICollection<GlobalProject> Projects { get; } = new List<GlobalProject>();
+
         private readonly ResourceStorage resourceStorage = new ResourceStorage(default);
 
         public void ProcessTurn()
         {
-            foreach (var tile in Lands)
+            foreach (var territory in Lands)
             {
-                tile.ProcessTurn(new TerritoryProcessTurnArgs());
+                territory.ProcessTurn(new TerritoryProcessTurnArgs());
             }
 
             UpdateIncome();
@@ -27,7 +30,7 @@ namespace Ascension.Domain.Concepts
             resourceStorage.PutResources(Income);
             var availableResources = resourceStorage.Available;
 
-            var projects = new List<Project>();
+            var projects = new List<Project>(Projects);
 
             foreach (var tile in Lands)
             {
