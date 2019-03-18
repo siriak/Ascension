@@ -105,6 +105,15 @@ namespace Ascension.Domain.Concepts
             uint Min(uint v1, uint v2, uint v3, uint v4, uint v5, uint v6, uint v7) => Math.Min(v1, Math.Min(v2, Math.Min(v3, Math.Min(v4, Math.Min(v5, Math.Min(v6, v7))))));
         }
 
+        public static Resources operator /(Resources r1, uint count)
+        {
+            return Apply(count, r1, Divide, MakeResources);
+
+            uint Divide(uint v1, uint v2) => v2 / v1;
+
+            Resources MakeResources(uint v1, uint v2, uint v3, uint v4, uint v5, uint v6, uint v7) => new Resources(v1, v2, v3, v4, v5, v6, v7);
+        }
+
         public static Resources operator *(uint count, Resources res)
         {
             return Apply(count, res, Multiply, MakeResources);
