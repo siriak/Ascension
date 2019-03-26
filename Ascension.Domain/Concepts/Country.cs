@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using Ascension.Domain.DTO;
 using Ascension.Domain.Internal;
 using Ascension.Domain.Projects;
 

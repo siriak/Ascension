@@ -1,4 +1,4 @@
-﻿namespace Ascension.Domain.Concepts
+﻿namespace Ascension.Domain.DTO
 {
     public class TerritoryProcessTurnArgs
     {

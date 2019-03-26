@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿using Ascension.Domain.DTO;
 using Ascension.Domain.Interfaces;
 
 namespace Ascension.Domain.Concepts
@@ -22,6 +21,20 @@ namespace Ascension.Domain.Concepts
         // TODO: Move cost depends on surface
         public double MoveCost => 1;
 
-        public TerritoryProcessTurnResult ProcessTurn(TerritoryProcessTurnArgs input) => throw new NotImplementedException();
+        public TerritoryProcessTurnResult ProcessTurn(TerritoryProcessTurnArgs input)
+        {
+            var toUse = FullIncome / 2;
+            var toCountry = FullIncome - toUse;
+            var leftover = Project.Consume(toUse);
+            toCountry += leftover;
+
+            var res = new TerritoryProcessTurnResult
+            {
+                ProjectFinished = Project.IsFinished,
+                ResourcesToCountryBudget = toCountry,
+            };
+
+            return res;
+        }
     }
 }
