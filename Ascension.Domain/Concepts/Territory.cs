@@ -1,9 +1,8 @@
 ﻿using Ascension.Domain.DTO;
-using Ascension.Domain.Interfaces;
 
 namespace Ascension.Domain.Concepts
 {
-    public class Territory : ITurnProcessor<TerritoryProcessTurnArgs, TerritoryProcessTurnResult>
+    public class Territory
     {
         public Territory(Surface surface) => Surface = surface;
 

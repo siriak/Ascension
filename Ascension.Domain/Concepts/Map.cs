@@ -1,11 +1,8 @@
-﻿using System;
-
-using Ascension.Domain.DTO;
-using Ascension.Domain.Interfaces;
+﻿using Ascension.Domain.DTO;
 
 namespace Ascension.Domain.Concepts
 {
-    public class Map : ITurnProcessor<MapProcessTurnArgs, MapProcessTurnResult>
+    public class Map
     {
         public Map(int size) => Size = size;
 
@@ -13,6 +10,10 @@ namespace Ascension.Domain.Concepts
 
         public int Size { get; }
 
-        public MapProcessTurnResult ProcessTurn(MapProcessTurnArgs input) => throw new NotImplementedException();
+        public MapProcessTurnResult ProcessTurn(MapProcessTurnArgs input)
+        {
+            // TODO: Process pollution, etc.
+            return new MapProcessTurnResult();
+        }
     }
 }

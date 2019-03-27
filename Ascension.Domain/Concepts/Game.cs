@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 
+using Ascension.Domain.DTO;
 using Ascension.Domain.Interfaces;
 
 namespace Ascension.Domain.Concepts
@@ -22,7 +23,7 @@ namespace Ascension.Domain.Concepts
 
         public void ProcessTurn()
         {
-            Map.ProcessTurn(null);
+            Map.ProcessTurn(new MapProcessTurnArgs());
 
             foreach (var country in Countries)
             {
