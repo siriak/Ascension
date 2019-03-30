@@ -9,7 +9,7 @@ namespace Ascension.Domain.Concepts
 {
     public abstract class Country
     {
-        public Resources Income { get; private set; }
+        public Resources GDP { get; private set; }
 
         public ICollection<Territory> Lands { get; } = new HashSet<Territory>();
 
@@ -21,18 +21,59 @@ namespace Ascension.Domain.Concepts
 
         public void ProcessTurn()
         {
+            UpdateInfo();
+
+            ProcessLands();
+            ProcessProjects();
+
+            UpdateInfo();
+        }
+
+        private void UpdateInfo()
+        {
+            UpdateGDP();
+            UpdateStorageCapacity();
+        }
+
+        private void UpdateGDP()
+        {
+            Resources newGDP = default;
             foreach (var territory in Lands)
             {
-                territory.ProcessTurn(new TerritoryProcessTurnArgs());
+                newGDP += territory.Income;
             }
 
-            UpdateIncome();
+            GDP = newGDP;
+        }
 
-            resourceStorage.PutResources(Income);
+        private void UpdateStorageCapacity()
+        {
+            Resources newCapacity = default;
+            foreach (var territory in Lands)
+            {
+                newCapacity += territory.Capacity;
+            }
+
+            resourceStorage.Capacity = newCapacity;
+        }
+
+        private void ProcessLands()
+        {
+            Resources toBudget = default;
+            foreach (var territory in Lands)
+            {
+                var res = territory.ProcessTurn(new TerritoryProcessTurnArgs());
+                toBudget += res.ResourcesToCountryBudget;
+            }
+
+            resourceStorage.PutResources(toBudget);
+        }
+
+        private void ProcessProjects()
+        {
             var availableResources = resourceStorage.Available;
 
             var projects = new List<Project>(Projects);
-
             foreach (var tile in Lands)
             {
                 projects.Add(tile.Project);
@@ -43,17 +84,6 @@ namespace Ascension.Domain.Concepts
             foreach (var project in orderedProjects)
             {
                 availableResources = project.Consume(availableResources);
-            }
-
-            UpdateIncome();
-        }
-
-        private void UpdateIncome()
-        {
-            Income = default;
-            foreach (var tile in Lands)
-            {
-                Income += tile.FullIncome;
             }
         }
     }

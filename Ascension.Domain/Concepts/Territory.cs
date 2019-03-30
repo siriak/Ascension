@@ -6,8 +6,9 @@ namespace Ascension.Domain.Concepts
     {
         public Territory(Surface surface) => Surface = surface;
 
-        // TODO: Income depends on surface
-        public Resources FullIncome => Building.Income;
+        public Resources Income => Building.Income;
+
+        public Resources Capacity => Building.Capacity;
 
         public Building Building { get; set; }
 
@@ -22,8 +23,8 @@ namespace Ascension.Domain.Concepts
 
         public TerritoryProcessTurnResult ProcessTurn(TerritoryProcessTurnArgs input)
         {
-            var toUse = FullIncome / 2;
-            var toCountry = FullIncome - toUse;
+            var toUse = Income / 2;
+            var toCountry = Income - toUse;
             var leftover = Project.Consume(toUse);
             toCountry += leftover;
 
