@@ -27,5 +27,7 @@ namespace Ascension.Domain.Buildings
         {
             Food = 10,
         };
+
+        public override int Pollution => 100;
     }
 }

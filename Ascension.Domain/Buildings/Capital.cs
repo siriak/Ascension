@@ -26,5 +26,7 @@ namespace Ascension.Domain.Buildings
             Ammunition = 1000,
             Soldiers = 1000,
         };
+
+        public override int Pollution => 100;
     }
 }

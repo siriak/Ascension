@@ -10,6 +10,8 @@
 
         public Territory Territory { get; }
 
+        public abstract int Pollution { get; }
+
         public Building(Territory territory) => Territory = territory;
     }
 }

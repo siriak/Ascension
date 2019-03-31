@@ -16,6 +16,8 @@ namespace Ascension.Domain.Concepts
 
         public Country Owner { get; set; }
 
+        public int Pollution { get; set; }
+
         public Surface Surface { get; }
 
         // TODO: Move cost depends on surface
@@ -23,11 +25,8 @@ namespace Ascension.Domain.Concepts
 
         public TerritoryProcessTurnResult ProcessTurn(TerritoryProcessTurnArgs input)
         {
-            var toUse = Income / 2;
-            var toCountry = Income - toUse;
-            var leftover = Project.Consume(toUse);
-            toCountry += leftover;
-
+            ProcessPollution();
+            var toCountry = ProcessResources();
             var res = new TerritoryProcessTurnResult
             {
                 ProjectFinished = Project.IsFinished,
@@ -35,6 +34,18 @@ namespace Ascension.Domain.Concepts
             };
 
             return res;
+        }
+
+        private void ProcessPollution() => Pollution += Building.Pollution;
+
+        private Resources ProcessResources()
+        {
+            var toUse = Income / 2;
+            var toCountry = Income - toUse;
+            var leftover = Project.Consume(toUse);
+            toCountry += leftover;
+
+            return toCountry;
         }
     }
 }

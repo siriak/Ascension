@@ -18,5 +18,7 @@ namespace Ascension.Domain.Buildings
         };
 
         public override Resources Capacity => default;
+
+        public override int Pollution => -10;
     }
 }
