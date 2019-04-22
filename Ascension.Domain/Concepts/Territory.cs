@@ -27,13 +27,12 @@ namespace Ascension.Domain.Concepts
         {
             ProcessPollution();
             var toCountry = ProcessResources();
-            var res = new TerritoryProcessTurnResult
+
+            return new TerritoryProcessTurnResult
             {
                 ProjectFinished = Project.IsFinished,
                 ResourcesToCountryBudget = toCountry,
             };
-
-            return res;
         }
 
         private void ProcessPollution() => Pollution += Building.Pollution;
