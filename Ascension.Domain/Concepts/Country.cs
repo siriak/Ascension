@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 using Ascension.Domain.DTO;
 using Ascension.Domain.Internal;
@@ -19,6 +20,9 @@ namespace Ascension.Domain.Concepts
 
         private readonly ResourceStorage resourceStorage = new ResourceStorage(default);
 
+        /// <summary>
+        /// Updates info about country, adds income to the budget and allocates resources to projects.
+        /// </summary>
         public void ProcessTurn()
         {
             UpdateInfo();
@@ -28,6 +32,12 @@ namespace Ascension.Domain.Concepts
 
             UpdateInfo();
         }
+
+        /// <summary>
+        /// Moves units, builds buildings, makes decisions, etc.
+        /// </summary>
+        /// <returns>Returns when the player finishes the turn.</returns>
+        public abstract Task MakeTurn();
 
         private void UpdateInfo()
         {

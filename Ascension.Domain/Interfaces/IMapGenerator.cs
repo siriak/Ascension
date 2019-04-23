@@ -6,6 +6,6 @@ namespace Ascension.Domain.Interfaces
 {
     public interface IMapGenerator
     {
-        Map GenerateMap(ICollection<Country> countries);
+        Map GenerateMap(ICollection<Country> countries, int size);
     }
 }

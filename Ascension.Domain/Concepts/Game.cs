@@ -15,8 +15,10 @@ namespace Ascension.Domain.Concepts
 
         public Game(IMapGenerator mapGenerator, ICountriesGenerator countriesGenerator)
         {
+            // TODO: remove
+            var size = 100;
             Countries = countriesGenerator.GenerateCountries();
-            Map = mapGenerator.GenerateMap(Countries);
+            Map = mapGenerator.GenerateMap(Countries, size);
 
             ProcessTurn();
         }

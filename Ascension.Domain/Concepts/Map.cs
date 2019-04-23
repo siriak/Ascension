@@ -12,6 +12,8 @@ namespace Ascension.Domain.Concepts
 
         public int Size { get; }
 
+        public Territory this[int x, int y] => map[x, y];
+
         public MapProcessTurnResult ProcessTurn(MapProcessTurnArgs input)
         {
             // TODO: Add corruption
