@@ -15,7 +15,7 @@ namespace Ascension.Domain.Tests.Concepts
         {
             var (smaller, bigger) = GetResources(count1, count2);
 
-            Assert.Throws<NotSufficientResourcesException>(() => { var result = count1 != count2 ? smaller - bigger : throw new NotSufficientResourcesException(); });
+            Assert.Throws<NotSufficientResourcesException>(() => { _ = count1 != count2 ? smaller - bigger : throw new NotSufficientResourcesException(); });
         }
 
         [Test]
