@@ -12,6 +12,6 @@
 
         public abstract int Pollution { get; }
 
-        public Building(Territory territory) => Territory = territory;
+        protected Building(Territory territory) => Territory = territory;
     }
 }
