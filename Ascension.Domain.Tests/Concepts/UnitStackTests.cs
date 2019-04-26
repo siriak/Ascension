@@ -70,7 +70,7 @@ namespace Ascension.Domain.Tests.Concepts
             Assert.IsFalse(stack.IsEmpty);
         }
 
-        private (UnitSpecification specification, UnitStack stack) SetUp(uint count)
+        private static (UnitSpecification specification, UnitStack stack) SetUp(uint count)
         {
             var unitSpecification = new SlaveSpecification();
             var stackSpecification = new UnitStackSpecification(unitSpecification, count);
