@@ -18,7 +18,7 @@ namespace Ascension.Domain.Concepts
 
         public ICollection<GlobalProject> Projects { get; } = new List<GlobalProject>();
 
-        private readonly ResourceStorage resourceStorage = new ResourceStorage(default);
+        private readonly ResourceStorage resourceStorage = new ResourceStorage(default(Resources));
 
         /// <summary>
         /// Updates info about country, adds income to the budget and allocates resources to projects.
@@ -47,7 +47,7 @@ namespace Ascension.Domain.Concepts
 
         private void UpdateGDP()
         {
-            Resources newGDP = default;
+            var newGDP = default(Resources);
             foreach (var territory in Lands)
             {
                 newGDP += territory.Income;
@@ -58,7 +58,7 @@ namespace Ascension.Domain.Concepts
 
         private void UpdateStorageCapacity()
         {
-            Resources newCapacity = default;
+            var newCapacity = default(Resources);
             foreach (var territory in Lands)
             {
                 newCapacity += territory.Capacity;
@@ -69,7 +69,7 @@ namespace Ascension.Domain.Concepts
 
         private void ProcessLands()
         {
-            Resources toBudget = default;
+            var toBudget = default(Resources);
             foreach (var territory in Lands)
             {
                 var res = territory.ProcessTurn(new TerritoryProcessTurnArgs());

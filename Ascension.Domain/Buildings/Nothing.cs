@@ -17,7 +17,7 @@ namespace Ascension.Domain.Buildings
             Culture = 20,
         };
 
-        public override Resources Capacity => default;
+        public override Resources Capacity => default(Resources);
 
         public override int Pollution => -10;
     }
