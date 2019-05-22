@@ -5,12 +5,6 @@ VisualStudioVersion = 16.0.28407.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ascension.Domain", "Ascension.Domain\Ascension.Domain.csproj", "{1411F21C-8B47-4C2D-B0EE-0A4B3235C53C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{E3BE4A60-02B5-4B62-B780-DAF85E3F3897}"
-	ProjectSection(SolutionItems) = preProject
-		LICENSE = LICENSE
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{E6E30EE5-96E1-4BE0-9AA2-6A18CC818F40}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B5533DFA-76DA-490C-916C-2BD540FC7FCF}"
@@ -34,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		.travis.yml = .travis.yml
+		LICENSE = LICENSE
+		README.md = README.md
 		stylecop.json = stylecop.json
 		stylecop.ruleset = stylecop.ruleset
 	EndProjectSection
