@@ -2,6 +2,10 @@ language: csharp
 solution: Ascension.sln
 mono: none
 dotnet: 2.1.300
+
 script:
  - dotnet build
  - dotnet test Ascension.Domain.Tests
+
+after_success:
+ - bash <(curl -s https://codecov.io/bash)
