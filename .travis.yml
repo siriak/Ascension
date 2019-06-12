@@ -4,4 +4,4 @@ mono: none
 dotnet: 2.1.300
 script:
  - dotnet build
- - dotnet test Ascension.Domain.Tests
+ - dotnet test --collect:"XPlat Code Coverage"
